@@ -1,11 +1,11 @@
-#Get K3D
+# Get K3D
 
 First install k3d which is a wrapper for k3s by using one of the commands below - For more info refer : https://github.com/rancher/k3d
 
 wget -q -O - https://raw.githubusercontent.com/rancher/k3d/master/install.sh | bash 
 curl -s https://raw.githubusercontent.com/rancher/k3d/master/install.sh
 
-#K3S cluster creation / Setup helm
+# K3S cluster creation / Setup helm
 
 k3d create --name dev <-- Create k3s cluster name as "dev"
 
@@ -19,7 +19,7 @@ kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceac
 
 helm init --service-account tiller <-- initialize helm to use the tiller account
 
-#Create namespaces accordingly
+# Create namespaces accordingly
 
 This is totally up to you, you can have multiple namespaces or single namespace
 
@@ -29,7 +29,7 @@ kubectl create namespace staging
 
 kubectl create namespace prod
 
-#Deploy Airflow with Celery workers
+# Deploy Airflow with Celery workers
 
 This will deploy airflow with celery workers / redis, here I've put my python code / DAG to https://github.com/urupaud/airflow-test.git and referring in dags.git.url parameter. Also you can have number of celery workers as pods by chaning workers.replicas parameter.
 
