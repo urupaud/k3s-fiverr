@@ -14,6 +14,6 @@ Now we need to import locally built docker image to K3S cluster, to do that run 
 
 Once all above is done, move to **charts** directory here, where it contains helm chart for dask / jupyter deployments and execute following command.
 
-`helm install --name dask . --values values.yaml --namespace <dev|staging|prod> --set webUI.servicePort=8080,jupyter.servicePort=8081`
+`helm install --name dask . --values values-dev.yaml --namespace <dev|staging|prod> --set webUI.servicePort=8080,jupyter.servicePort=8081`
 
 By default this deployment will deploy 3 dask workers, you can simply change it by setting **worker.replicas** parameter with helm install command. For more information refer : https://github.com/helm/charts/tree/master/stable/dask
