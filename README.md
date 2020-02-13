@@ -17,6 +17,8 @@ Hope you've already have installed kubectl if not refer : https://kubernetes.io/
 
 `kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller` <-- set cluster admin role for tiller
 
+If you don't have helm installed, refer https://helm.sh/docs/intro/install/
+
 `helm init --service-account tiller` <-- initialize helm to use the tiller account
 
 # Create namespaces accordingly
