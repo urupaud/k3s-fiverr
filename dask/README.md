@@ -12,7 +12,7 @@ Now we need to import locally built docker image to K3S cluster, to do that run 
 
 `k3d import-images -n <k3s_cluster_name> jupyter:local`
 
-Once all above is done, move to **charts** directory here where it contains helm chart for dask / jupyter deployments and execute following command.
+Once all above is done, move to **charts** directory here, where it contains helm chart for dask / jupyter deployments and execute following command.
 
 `helm install --name dask dask/dask --set webUI.servicePort=8080,jupyter.servicePort=8081,jupyter.image=jupyter:local --namespace {staging|prod|dev}`
 
