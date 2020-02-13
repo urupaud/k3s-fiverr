@@ -51,3 +51,8 @@ Once pods are up and running you'll be able to access airflow web , flower by us
 You can access airflow web by using endpoint of svc name "airflow-web"
 
 You can access airflow flower by using the endpoint of svc "airflow-flower"
+
+
+# Deploy Dask with workers and Flask API
+
+Please refer dask and flask directories for information.
