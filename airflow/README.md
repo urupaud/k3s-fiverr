@@ -1,37 +1,3 @@
-# Get K3D
-
-First install k3d which is a wrapper for k3s by using one of the commands below - For more info refer : https://github.com/rancher/k3d
-
-wget : `wget -q -O - https://raw.githubusercontent.com/rancher/k3d/master/install.sh | bash`
-
-curl : `curl -s https://raw.githubusercontent.com/rancher/k3d/master/install.sh | bash`
-
-# K3S cluster creation / Setup helm
-
-`k3d create --name dev` <-- Create k3s cluster name as "dev", you can give a cluster name as your wish
-
-Hope you've already installed kubectl if not refer : https://kubernetes.io/docs/tasks/tools/install-kubectl/
-
-`export KUBECONFIG="$(k3d get-kubeconfig --name='dev')"` <-- set KUBECONFIG to use kubectl
-
-`kubectl -n kube-system create serviceaccount tiller` <-- create service account for tiller
-
-`kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller` <-- set cluster admin role for tiller
-
-If you don't have helm installed, refer https://helm.sh/docs/intro/install/
-
-`helm init --service-account tiller` <-- initialize helm to use the tiller account
-
-# Create namespaces accordingly
-
-This is totally up to you, you can have multiple namespaces or single namespace
-
-`kubectl create namespace dev`
-
-`kubectl create namespace staging`
-
-`kubectl create namespace prod`
-
 # Deploy Airflow with Celery workers
 
 This will deploy airflow with celery workers / redis / postgresql as pods, here I've put my python code / DAG to https://github.com/urupaud/airflow-test.git and refer it in **dags.git.url** parameter. Also you can have number of celery workers as pods by changing **workers.replicas** parameter.
@@ -51,8 +17,3 @@ Once pods are up and running you'll be able to access airflow web , flower by us
 You can access airflow web by using endpoint of svc name "airflow-web"
 
 You can access airflow flower by using the endpoint of svc "airflow-flower"
-
-
-# Deploy Dask with workers and Flask API
-
-Please refer dask and flask directories for information.
