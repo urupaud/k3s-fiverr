@@ -1,5 +1,7 @@
 # Sample Flask API deployment on K3S cluster using helm charts.
 
+First build the docker image locally using following command.
+
 `docker build -t flask:local .` 
 
 Now we need to import locally built docker image to K3S cluster, to do that run the following command.
