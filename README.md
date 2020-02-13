@@ -7,7 +7,7 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/master/install.sh
 
 # K3S cluster creation / Setup helm
 
-`k3d create --name dev` <-- Create k3s cluster name as "dev"
+`k3d create --name dev` <-- Create k3s cluster name as "dev", you can give a cluster name as your wish
 
 Hope you've already have installed kubectl if not refer : https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
@@ -31,7 +31,7 @@ This is totally up to you, you can have multiple namespaces or single namespace
 
 # Deploy Airflow with Celery workers
 
-This will deploy airflow with celery workers / redis / postgresql as pods, here I've put my python code / DAG to https://github.com/urupaud/airflow-test.git and refer it in **dags.git.url** parameter. Also you can have number of celery workers as pods by chaning **workers.replicas** parameter.
+This will deploy airflow with celery workers / redis / postgresql as pods, here I've put my python code / DAG to https://github.com/urupaud/airflow-test.git and refer it in **dags.git.url** parameter. Also you can have number of celery workers as pods by changing **workers.replicas** parameter.
 
 For more information about the parameters refer : https://github.com/helm/charts/tree/master/stable/airflow#helm-chart-configuration
 
