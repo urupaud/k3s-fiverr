@@ -3,6 +3,7 @@
 First install k3d which is a wrapper for k3s by using one of the commands below - For more info refer : https://github.com/rancher/k3d
 
 wget : `wget -q -O - https://raw.githubusercontent.com/rancher/k3d/master/install.sh | bash`
+
 curl : `curl -s https://raw.githubusercontent.com/rancher/k3d/master/install.sh | bash`
 
 # K3S cluster creation / Setup helm
