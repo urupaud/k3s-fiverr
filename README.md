@@ -43,6 +43,10 @@ Wait for sometime till pods come to "Running" status, you can see the status by 
 
 `kubectl get pods --all-namespaces`
 
-Once pods are up and running you'll be able to access airflow web , flower by using their service cluster IPs and respective ports. To get those information use
+Once pods are up and running you'll be able to access airflow web , flower by using their endpoints. To get endpoints use
 
-`kubectl get services -n <prod|staging|dev>`
+`kubectl describe svc airflow -n <staging|prod|dev>` <-- this will show information related to airflow deployment
+
+You can access airflow web by using endpoint of svc name "airflow-web"
+
+You can access airflow flower by using the endpoint of svc "airflow-flower"
