@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "flaskapi.fullname" . }}-deployment
+spec:
+  replicas: {{ .Values.replicas | default 1 }}
+  selector:
+    matchLabels:
+      appname: {{ template "flaskapi.fullname" . }}
+  template:
+    metadata:
+      labels:
+        appname: {{ template "flaskapi.fullname" . }}
+    spec:
+      containers:
+        - name: {{ template "flaskapi.fullname" . }}
+          image: {{ .Values.Image }}
+          ports:
+          - containerPort: 5000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "flaskapi.fullname" . }}-service
+  labels:
+    app: {{ template "flaskapi.fullname" . }}
+spec:
+  ports:
+    - name: {{ template "flaskapi.fullname" . }}
+      port: 5000
+      targetPort: 5000
+  selector:
+    appname: {{ template "flaskapi.fullname" . }}
+  type: LoadBalancer
