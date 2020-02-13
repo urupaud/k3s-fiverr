@@ -34,4 +34,4 @@ This is totally up to you, you can have multiple namespaces or single namespace
 
 # Deploy Airflow with celery workers , Dask with workers and Flask API
 
-Please refer aiflow, dask and flask directories for information.
+Please refer airflow, dask and flask directories for information.
