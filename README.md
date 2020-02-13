@@ -10,7 +10,7 @@ curl : `curl -s https://raw.githubusercontent.com/rancher/k3d/master/install.sh 
 
 `k3d create --name dev` <-- Create k3s cluster name as "dev", you can give a cluster name as your wish
 
-Hope you've already have installed kubectl if not refer : https://kubernetes.io/docs/tasks/tools/install-kubectl/
+Hope you've already installed kubectl if not refer : https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 `export KUBECONFIG="$(k3d get-kubeconfig --name='dev')"` <-- set KUBECONFIG to use kubectl
 
