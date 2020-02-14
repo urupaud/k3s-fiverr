@@ -10,7 +10,7 @@ Now we need to import locally built docker image to K3S cluster, to do that run 
 
 Once all above is done, move to **charts** directory here, where it contains helm chart for flask api deployment and execute following command.
 
-`helm install --name flaskapi . --values values-dev.yaml --namespace dev`
+`helm install --name flaskapi . --values values-dev.yaml --namespace <dev|staging|prod>`
 
 Once pods are up and running you'll be able to access flask api by using it's endpoint. To get endpoints use
 

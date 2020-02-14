@@ -12,7 +12,7 @@ Now we need to import locally built docker image to K3S cluster, to do that run 
 
 Once all above are done, move to **charts** directory here, where it contains helm chart for airflow with celery workers / redis / postgresql deployments and execute following command.
 
-`helm install --name airflow . --values values-dev.yaml --namespace dev`
+`helm install --name airflow . --values values-dev.yaml --namespace <dev|staging|prod>`
 
 Wait for sometime till pods come to "Running" status, you can see the status by using
 
@@ -27,6 +27,6 @@ eg - http://172.18.0.2:5555 <-- Airflow flower
 
 You can change the number of celery workers as pods by changing **workers.replicas** parameter.
 
-`helm install --name airflow . --values values-dev.yaml --namespace dev --set workers.replicas=3`
+`helm install --name airflow . --values values-dev.yaml --namespace <dev|staging|prod> --set workers.replicas=3`
 
 For more information about the parameters refer : https://github.com/helm/charts/tree/master/stable/airflow#helm-chart-configuration
