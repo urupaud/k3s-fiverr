@@ -42,7 +42,7 @@ airflow:
     annotations: {}
     sessionAffinity: "None"
     sessionAffinityConfig: {}
-    type: ClusterIP
+    type: LoadBalancer
     externalPort: 8080
     nodePort:
       http:
@@ -64,10 +64,10 @@ airflow:
   image:
     ##
     ## docker-airflow image
-    repository: puckel/docker-airflow
+    repository: airflow
     ##
     ## image tag
-    tag: 1.10.4
+    tag: local
     ##
     ## Image pull policy
     ## values: Always or IfNotPresent
@@ -221,7 +221,7 @@ flower:
   annotations: {}
   service:
     annotations: {}
-    type: ClusterIP
+    type: LoadBalancer
     externalPort: 5555
 
   ## Support Node, affinity and tolerations for flower pod assignment

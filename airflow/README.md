@@ -1,10 +1,18 @@
 # Deploy Airflow with Celery workers
 
-This will deploy airflow with celery workers / redis / postgresql as pods, here I've put my python code / DAG to https://github.com/urupaud/airflow-test.git and refer it in **dags.git.url** parameter. Also you can have number of celery workers as pods by changing **workers.replicas** parameter.
+This will deploy airflow with celery workers / redis / postgresql as pods, here I've put my python code / DAGs into **dags** directory here.
 
-For more information about the parameters refer : https://github.com/helm/charts/tree/master/stable/airflow#helm-chart-configuration
+First build the airflow docker image locally with dags directory using following command.
 
-`helm install --name airflow stable/airflow --namespace <staging|prod|dev> --set dags.git.gitSync.enabled=true,dags.git.url=https://github.com/urupaud/airflow-test.git,dags.git.ref=master,dags.git.gitSync.refreshTime=10s,dags.initContainer.enabled=true,workers.replicas=<number_of_worker_pods>`
+`docker build -t airflow:local .` 
+
+Now we need to import locally built docker image to K3S cluster, to do that run the following command.
+
+`k3d import-images -n <k3s_cluster_name> airflow:local`
+
+Once all above are done, move to **charts** directory here, where it contains helm chart for airflow with celery workers / redis / postgresql deployments and execute following command.
+
+`helm install --name airflow . --values values-dev.yaml --namespace dev`
 
 Wait for sometime till pods come to "Running" status, you can see the status by using
 
@@ -12,8 +20,13 @@ Wait for sometime till pods come to "Running" status, you can see the status by 
 
 Once pods are up and running you'll be able to access airflow web , flower by using their endpoints. To get endpoints use
 
-`kubectl describe svc airflow -n <staging|prod|dev>` <-- this will show information related to airflow deployment
+`kubectl get services -n <dev|staging|prod>` <-- You'll be able to see airflow-web and air-flow folwer external IPs here, access them by using their external IPs and Ports.
 
-You can access airflow web by using endpoint of svc name "airflow-web"
+eg - http://172.18.0.2:5555 <-- Airflow flower
+     http://172.18.0.2:8080 <-- Airflow web
 
-You can access airflow flower by using the endpoint of svc "airflow-flower"
+You can change the number of celery workers as pods by changing **workers.replicas** parameter.
+
+`helm install --name airflow . --values values-dev.yaml --namespace dev --set workers.replicas=3`
+
+For more information about the parameters refer : https://github.com/helm/charts/tree/master/stable/airflow#helm-chart-configuration
