@@ -22,7 +22,7 @@ Once pods are up and running you'll be able to access jupyterlab and dask by usi
 
 `kubectl get services -n <dev|staging|prod>` <-- You'll be able to see dask-jupyter and dask-scheduler external IPs here, access them by using their external IPs and Ports.
 
-eg - http://172.18.0.2:5555 <-- jupyterlab
+eg - http://172.18.0.2:8081 <-- jupyterlab
      http://172.18.0.2:8080 <-- dask
 
 
