@@ -1,9 +1,5 @@
 # Dask deployment on K3S cluster using helm charts.
 
-`helm repo add dask https://helm.dask.org/` <-- Add dask helm repo to k3s cluster
-
-`helm repo update` <-- update the helm repositories
-
 Since we need to push our own code to jupyter to run dask jobs, first create a jupyter docker image with your code. Here I've put sample python code to **test_code** directory. And then build a docker image as below.
 
 `docker build -t jupyter:local .`
