@@ -4,4 +4,6 @@
 
 replicas: 1
 
+hostname: dev-flaskapi.emi.pe
+
 Image: flask_api:local

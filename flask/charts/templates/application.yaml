@@ -39,10 +39,10 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: host-ingress
+  name: flaskapi-ingress
 spec:
   rules:
-  - host: dev-flaskapi.emi.pe
+  - host: {{ .Values.hostname }}
     http:
       paths:
       - backend:
