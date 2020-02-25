@@ -20,4 +20,4 @@ eg - http://172.18.0.2:5000 <-- flaskapi
 
 By default this deployment will deploy only 1 api, if you want to change it, change the value of **replicas** variable in **values-dev.yaml** in charts directory.
 
-Here by using ingress, flask api hostname set to **dev-flaskapi.emi.pe** so hostname will direct to http://172.18.0.2:5000 (make sure to put host entry when doing it locally). You can set desired hostname by simply changing the **hostname** variable in respective environment's value yaml file. 
+Here by using ingress, flask api hostname set to **dev-flaskapi.emi.pe** so hostname will redirect to http://172.18.0.2:5000 which is flask api service on cluster (make sure to put host entry when doing it locally). You can set desired hostname by simply changing the **hostname** variable in respective environment's value yaml file. 

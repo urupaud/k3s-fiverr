@@ -21,7 +21,8 @@ spec:
       secretName: {{ .Values.ingress.web.tls.secretName }}
 {{- end }}
   rules:
-    - http:
+    - host: {{ .Values.host }}
+      http:
         paths:
           {{- range .Values.ingress.web.precedingPaths }}
           - path: {{ .path }}
