@@ -25,3 +25,5 @@ eg - http://172.18.0.2:8081 <-- jupyterlab
 By default this deployment will deploy 3 dask workers, you can simply change it by setting **worker.replicas** parameter with helm install command. For more information refer : https://github.com/helm/charts/tree/master/stable/dask
 
 `helm install --name dask . --values values-dev.yaml --namespace dev --set webUI.servicePort=8080,jupyter.servicePort=8081 --set worker.replicas=1`
+
+Here by using ingress, dask hostname set to **dev-dask.emi.pe** so hostname will redirect to http://172.18.0.2:8080 which is dask service on cluster and jupyterlab hostname set to **dev-jupyter.emi.pe** so hostname will redirect to http://172.18.0.2:8081 which is jupyterlab service on cluster (make sure to put host entry when doing it locally). You can set desired hostname by simply changing the **hostname** variables in respective environment's value yaml file. 

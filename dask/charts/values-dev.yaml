@@ -31,10 +31,10 @@ webUI:
   name: webui
   servicePort: 80
   ingress:
-    enabled: false
+    enabled: true
     tls: false
     # secretName: dask-scheduler-tls
-    hostname: dask-ui.example.com
+    hostname: dev-dask.emi.pe
     annotations:
      # kubernetes.io/ingress.class: "nginx"
      # secretName: my-tls-cert
@@ -114,10 +114,10 @@ jupyter:
   nodeSelector: {}
   affinity: {}
   ingress:
-    enabled: false
+    enabled: true
     tls: false
     # secretName: dask-jupyter-tls
-    hostname: dask-jupyter.example.com
+    hostname: dev-jupyter.emi.pe
     annotations:
       # kubernetes.io/ingress.class: "nginx"
       # secretName: my-tls-cert
