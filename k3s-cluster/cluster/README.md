@@ -54,4 +54,6 @@ Finally replace the line in config file **server: https://127.0.0.1:6443** to **
 
 example - server: https://127.0.0.1:6443 -> https://k3s-server-lb-7be5ffb891415acc.elb.us-east-1.amazonaws.com:6443
 
-At this point you should have access to k3s cluster on AWS.
+At this point you should have access to k3s cluster on AWS. 
+
+Now move to **kube-config** directory to apply rest of the kubernetes configs to k3s cluster.
