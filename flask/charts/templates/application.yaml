@@ -17,6 +17,10 @@ spec:
           image: {{ .Values.Image }}
           ports:
           - containerPort: 5000
+      {{- if .Values.oncloud.enabled }}
+      nodeSelector:
+        InstanceType: "Ondemand"
+      {{- end }}
 ---
 
 apiVersion: v1
