@@ -4,7 +4,7 @@ mkdir -p /etc/rancher/k3s/
 
 cat <<EOF > /etc/rancher/k3s/registries.yaml
 mirrors:
-  "${docker-registry-hosfqdntname}":
+  "${docker-registry-fqdn}":
     endpoint:
       - "https://${docker-registry-fqdn}"
 configs:

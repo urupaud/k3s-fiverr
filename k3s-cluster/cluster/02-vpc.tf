@@ -101,7 +101,7 @@ resource "aws_eip" "k3s-nat-gw-eip" {
 }
 
 resource "aws_nat_gateway" "k3s-nat-gw" {
-  allocation_id = aws_eip.k3s-nat-gw-eip.id
+  allocation_id = "${aws_eip.k3s-nat-gw-eip.id}"
   subnet_id     = aws_subnet.k3s-public-subnet-01.id
   tags = {
     Name = "k3s-nat-gw"

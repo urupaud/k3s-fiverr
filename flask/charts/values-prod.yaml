@@ -1,0 +1,12 @@
+# Default values for reloadebayspecifications.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicas: 1
+
+oncloud:
+    enabled: true
+
+hostname: staging-flaskapi.emi.pe
+
+Image: registry.emi.pe/flask:latest

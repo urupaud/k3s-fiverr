@@ -40,7 +40,7 @@ resource "aws_autoscaling_group" "k3s_agent_spot" {
   vpc_zone_identifier = [aws_subnet.k3s-public-subnet-01.id, aws_subnet.k3s-public-subnet-02.id, aws_subnet.k3s-public-subnet-03.id]
   launch_configuration = aws_launch_configuration.k3s_agent_spot.id
 
-  depends_on = [aws_subnet.k3s_public_subnet_01, aws_subnet.k3s_public_subnet_02, aws_subnet.k3s_public_subnet_03]
+  depends_on = [aws_subnet.k3s-public-subnet-01, aws_subnet.k3s-public-subnet-02, aws_subnet.k3s-public-subnet-03]
 
   tag {
     key                 = "Name"
