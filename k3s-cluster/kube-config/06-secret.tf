@@ -1,25 +1,34 @@
+data "template_file" "docker-registry"{
+    template = "${file("${path.module}/files/docker-registry.json.tpl")}"
+
+    vars = {
+        docker-registry-username = "${var.docker-registry-username}"
+        docker-registry-password = "${var.docker-registry-password}"
+    }
+}
+
 resource "kubernetes_secret" "docker-registry-staging" {
   metadata {
-    name = "docker-registry"
+    name = "registry.emi.pe"
     namespace = "staging"
   }
 
   data = {
-    ".dockercfg" = "${file("${path.module}/files/docker-registry.json")}"
+    ".dockerconfigjson" = data.template_file.docker-registry.rendered
   }
 
-  type = "kubernetes.io/dockercfg"
+  type = "kubernetes.io/dockerconfigjson"
 }
 
 resource "kubernetes_secret" "docker-registry-prod" {
   metadata {
-    name = "docker-registry"
+    name = "registry.emi.pe"
     namespace = "prod"
   }
 
   data = {
-    ".dockercfg" = "${file("${path.module}/files/docker-registry.json")}"
+    ".dockerconfigjson" = data.template_file.docker-registry.rendered
   }
 
-  type = "kubernetes.io/dockercfg"
+  type = "kubernetes.io/dockerconfigjson"
 }

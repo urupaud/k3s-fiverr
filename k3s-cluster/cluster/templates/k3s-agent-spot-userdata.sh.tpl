@@ -14,7 +14,7 @@ configs:
       password: ${docker-registry-password} # this is the registry password
 EOF
 
-echo "18.233.158.53  registry.emi.pe" >> /etc/hosts
+#echo "18.233.158.53  registry.emi.pe" >> /etc/hosts
 
 until (curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION='v${k3s-version}' INSTALL_K3S_EXEC='agent --node-label InstanceType=Spot' K3S_CLUSTER_SECRET='${k3s-cluster-secret}' K3S_URL='https://${k3s-url}:6443' sh -); do
   echo 'k3s did not install correctly'

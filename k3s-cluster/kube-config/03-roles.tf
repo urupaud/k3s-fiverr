@@ -5,7 +5,7 @@ resource "kubernetes_role" "tiller-prod" {
   }
 
   rule {
-    api_groups = ["", "batch", "extensions", "apps"]
+    api_groups = ["", "batch", "extensions", "apps", "networking.k8s.io"]
     resources  = ["*"]
     verbs      = ["*"]
   }
@@ -18,7 +18,7 @@ resource "kubernetes_role" "tiller-staging" {
   }
 
   rule {
-    api_groups = ["", "batch", "extensions", "apps"]
+    api_groups = ["", "batch", "extensions", "apps", "networking.k8s.io"]
     resources  = ["*"]
     verbs      = ["*"]
   }

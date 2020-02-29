@@ -1,4 +1,6 @@
 # Duplicate this file and put your customization here
+cloud:
+  enabled: false
 
 ##
 ## common settings and setting for the webserver
