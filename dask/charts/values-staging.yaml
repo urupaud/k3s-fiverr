@@ -12,7 +12,7 @@ scheduler:
   servicePort: 8786
   resources: {}
   tolerations: []
-  nodeSelector: {}
+  nodeSelector: {InstanceType: "Ondemand"}
   affinity: {}
 
 webUI:
@@ -21,7 +21,7 @@ webUI:
   ingress:
     enabled: true
     tls: false
-    hostname: dev-dask.emi.pe
+    hostname: staging-dask.emi.pe
     annotations:
 
 worker:
@@ -48,7 +48,7 @@ jupyter:
   name: jupyter
   enabled: true
   image:
-    repository: "jupyter"
+    repository: "registry.emi.pe/jupyter"
     tag: latest
     pullPolicy: IfNotPresent
     pullSecrets:
@@ -61,10 +61,10 @@ jupyter:
   extraConfig: |-
   resources: {}
   tolerations: []
-  nodeSelector: {}
+  nodeSelector: {InstanceType: "Ondemand"}
   affinity: {}
   ingress:
     enabled: true
     tls: false
-    hostname: dev-jupyter.emi.pe
+    hostname: staging-jupyter.emi.pe
     annotations:

@@ -4,8 +4,7 @@
 
 replicas: 1
 
-oncloud:
-    enabled: false
+nodeSelector: {}
 
 hostname: dev-flaskapi.emi.pe
 

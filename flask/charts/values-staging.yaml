@@ -4,9 +4,8 @@
 
 replicas: 1
 
-oncloud:
-    enabled: true
+nodeSelector: {InstanceType: "Ondemand"}
 
-hostname: flaskapi.emi.pe
+hostname: staging-flaskapi.emi.pe
 
 Image: registry.emi.pe/flask:latest

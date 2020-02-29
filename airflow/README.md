@@ -42,3 +42,8 @@ In order to push the docker image to private docker registry, use following comm
 `docker tag airflow:latest registry.emi.pe/airflow:latest`
 
 `docker push registry.emi.pe/airflow:latest`
+
+If you refer to charts directory **values-prod.yaml** and **values-prod.yaml** files you'll be able to see variables called **nodeSelector** by using this variable you can select on which node you want to deploy your paticular deployment.
+
+eg - nodeSelector: {InstanceType: "Ondemand"} <- This will deploy to instances where we have the kubernetes label InstanceType set to Ondemand.
+     nodeSelector: {InstanceType: "Spot"} <- This will deploy to instances where we have the kubernetes label InstanceType set to Spot.

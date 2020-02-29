@@ -17,10 +17,10 @@ spec:
           image: {{ .Values.Image }}
           ports:
           - containerPort: 5000
-      {{- if .Values.oncloud.enabled }}
+    {{- with .Values.nodeSelector }}
       nodeSelector:
-        InstanceType: "Ondemand"
-      {{- end }}
+        {{- toYaml . | nindent 8 }}
+    {{- end }} 
 ---
 
 apiVersion: v1
