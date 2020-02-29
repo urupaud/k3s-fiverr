@@ -7,6 +7,6 @@ replicas: 1
 oncloud:
     enabled: true
 
-hostname: staging-flaskapi.emi.pe
+hostname: flaskapi.emi.pe
 
 Image: registry.emi.pe/flask:latest

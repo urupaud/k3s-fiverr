@@ -32,4 +32,5 @@ resource "aws_launch_configuration" "k3s_agent_spot" {
     create_before_destroy = true
   }
 
+  depends_on           = [aws_iam_instance_profile.k3s-role, aws_lb.k3s-server-lb]
 }

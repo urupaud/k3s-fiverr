@@ -21,3 +21,13 @@ eg - http://172.18.0.2:5000 <-- flaskapi
 By default this deployment will deploy only 1 api, if you want to change it, change the value of **replicas** variable in **values-dev.yaml** in charts directory.
 
 Here by using ingress, flask api hostname set to **dev-flaskapi.emi.pe** so hostname will redirect to http://172.18.0.2:5000 which is flask api service on cluster (make sure to put host entry when doing it locally). You can set desired hostname by simply changing the **hostname** variable in respective environment's value yaml file. 
+
+In order to push the docker image to private docker registry, use following commands.
+
+`docker build -t flask:latest .`
+
+`docker login https://registry.emi.pe`
+
+`docker tag flask:latest registry.emi.pe/flask:latest`
+
+`docker push registry.emi.pe/flask:latest`
