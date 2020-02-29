@@ -6,6 +6,9 @@ replicas: 1
 
 nodeSelector: {}
 
+cloud:
+    enabled: false
+
 hostname: dev-flaskapi.emi.pe
 
 Image: flask_api:local

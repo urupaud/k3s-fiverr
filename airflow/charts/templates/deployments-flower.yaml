@@ -38,6 +38,10 @@ spec:
         component: flower
         release: {{ .Release.Name }}
     spec:
+    {{- if .Values.cloud.enabled }}
+      serviceAccountName: tiller
+      automountServiceAccountToken: false
+    {{- end }}
       {{- if .Values.airflow.image.pullSecret }}
       imagePullSecrets:
         - name: {{ .Values.airflow.image.pullSecret }}

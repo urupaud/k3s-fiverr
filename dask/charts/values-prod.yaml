@@ -1,5 +1,8 @@
 ---
 
+cloud:
+  enabled: true
+
 scheduler:
   name: scheduler
   image:

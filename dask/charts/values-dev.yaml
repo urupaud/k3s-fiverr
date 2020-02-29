@@ -2,6 +2,9 @@
 # nameOverride: dask
 # fullnameOverride: dask
 
+cloud:
+  enabled: false
+
 scheduler:
   name: scheduler
   image:

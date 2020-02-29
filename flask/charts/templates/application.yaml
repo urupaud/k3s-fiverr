@@ -17,6 +17,10 @@ spec:
           image: {{ .Values.Image }}
           ports:
           - containerPort: 5000
+    {{- if .Values.cloud.enabled }}
+      serviceAccountName: tiller
+      automountServiceAccountToken: false
+    {{- end }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

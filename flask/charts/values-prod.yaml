@@ -6,6 +6,9 @@ replicas: 1
 
 nodeSelector: {InstanceType: "Ondemand"}
 
+cloud:
+    enabled: true
+
 hostname: flaskapi.emi.pe
 
 Image: registry.emi.pe/flask:latest
