@@ -27,7 +27,11 @@ eg - http://172.18.0.2:5555 <-- Airflow flower
 
 You can change the number of celery workers as pods by changing **workers.replicas** parameter.
 
-`helm install --name airflow . --values values-dev.yaml --namespace <dev|staging|prod> --set workers.replicas=3`
+`helm install --name airflow . --values values-dev.yaml --namespace dev --set workers.replicas=3` - to deploy on localhost in dev namespace
+
+`helm install --name airflow . --values values-staging.yaml --namespace staging --set workers.replicas=3` - to deploy on aws cluster in staging namespace
+
+`helm install --name airflow . --values values-prod.yaml --namespace prod --set workers.replicas=3` - to deploy on aws cluster in prod namespace
 
 For more information about the parameters refer : https://github.com/helm/charts/tree/master/stable/airflow#helm-chart-configuration
 
