@@ -35,3 +35,7 @@ This is totally up to you, you can have multiple namespaces or single namespace
 # Deploy Airflow with celery workers , Dask with workers and Flask API
 
 Please refer airflow, dask and flask directories for information.
+
+# Create K3S cluster on AWS / Private Docker registry
+
+Please refer k3s-cluster directory for infomation.

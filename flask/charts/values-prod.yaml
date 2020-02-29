@@ -4,8 +4,8 @@
 
 replicas: 1
 
-nodeSelector: {}
+nodeSelector: {InstanceType: "Ondemand"}
 
-hostname: dev-flaskapi.emi.pe
+hostname: flaskapi.emi.pe
 
-Image: flask_api:local
+Image: registry.emi.pe/flask:latest

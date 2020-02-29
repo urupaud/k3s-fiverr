@@ -30,3 +30,20 @@ You can change the number of celery workers as pods by changing **workers.replic
 `helm install --name airflow . --values values-dev.yaml --namespace <dev|staging|prod> --set workers.replicas=3`
 
 For more information about the parameters refer : https://github.com/helm/charts/tree/master/stable/airflow#helm-chart-configuration
+
+Here by using ingress, airflow web ui hostname set to **dev-airflow.emi.pe** so hostname will redirect to http://172.18.0.2:8080 which is airflow web ui service on cluster and airflow flower hostname set to **dev-flower.emi.pe** so hostname will redirect to http://172.18.0.2:5555 which is airflow flower ui service on cluster (make sure to put host entry when doing it locally). You can set desired hostname by simply changing the **host** variable in respective environment's value yaml file. 
+
+In order to push the docker image to private docker registry, use following commands.
+
+`docker build -t airflow:latest .`
+
+`docker login https://registry.emi.pe`
+
+`docker tag airflow:latest registry.emi.pe/airflow:latest`
+
+`docker push registry.emi.pe/airflow:latest`
+
+If you refer to charts directory **values-prod.yaml** and **values-prod.yaml** files you'll be able to see variables called **nodeSelector** by using this variable you can select on which node you want to deploy your paticular deployment.
+
+eg - nodeSelector: {InstanceType: "Ondemand"} <- This will deploy to instances where we have the kubernetes label InstanceType set to Ondemand.
+     nodeSelector: {InstanceType: "Spot"} <- This will deploy to instances where we have the kubernetes label InstanceType set to Spot.

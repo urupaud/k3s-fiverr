@@ -17,7 +17,10 @@ spec:
           image: {{ .Values.Image }}
           ports:
           - containerPort: 5000
-
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+    {{- end }} 
 ---
 
 apiVersion: v1
@@ -34,3 +37,18 @@ spec:
   selector:
     appname: {{ template "flaskapi.fullname" . }}
   type: LoadBalancer
+
+---
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: flaskapi-ingress
+spec:
+  rules:
+  - host: {{ .Values.hostname }}
+    http:
+      paths:
+      - backend:
+          serviceName: {{ template "flaskapi.fullname" . }}-service
+          servicePort: 5000
